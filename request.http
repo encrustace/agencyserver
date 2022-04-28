@@ -1,0 +1,21 @@
+
+##Authenticate user
+POST http://localhost:3000/api/user/authenticate
+Content-Type: application/json
+
+{
+    "Email":"imran@gmail.com",
+    "Password": "123"
+}
+
+## Register User
+POST http://localhost:3000/api/user/register
+Content-Type: application/json
+
+{
+    "Email":"imran@gmail.com",
+    "Password": "123"
+}
+
+## Get Users
+GET http://localhost:3000/api/user/get HTTP/1.1
