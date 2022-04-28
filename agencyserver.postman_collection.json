@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "d79ed37b-bd77-41ab-8bc7-07646a1b2d6c",
+		"name": "agencyserver",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddAgencyAndClient",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6ImtoYW5AZ21haWwuY29tIiwiaWF0IjoxNjUxMTc4MjU0LCJleHAiOjE2NTEyNjQ2NTR9.G9rGZ6DPLitO5m4eJJbobRf7ufojIGrUo3kaGiXUY8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"agency\":{\n        \"AgencyId\": \"A18\",\n        \"Name\": \"Some Agenc\",\n        \"Address\": \"Hinjewadi\",\n        \"Address2\": \"Chinchwad\",\n        \"State\": \"Maharastra\",\n        \"City\": \"Pune\",\n        \"PhoneNumber\": 9999999999\n    },\n    \"client\":{\n        \"ClientId\": \"C111\",\n        \"Name\": \"Imran Khan\",\n        \"Email\": \"encrustace@gmail.com\",\n        \"TotalBill\": 112,\n        \"PhoneNumber\": 9999999999\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/add",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"Email\": \"khan@gmail.com\",\n    \"Password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserList",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"Email\": \"imran@gmail.com\",\n    \"Password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/get",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTopAgencyWithMaxBill",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6ImtoYW5AZ21haWwuY29tIiwiaWF0IjoxNjUxMTc4MjU0LCJleHAiOjE2NTEyNjQ2NTR9.G9rGZ6DPLitO5m4eJJbobRf7ufojIGrUo3kaGiXUY8g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/agency/top",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"agency",
+						"top"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"Email\": \"khan@gmail.com\",\n    \"Password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateClient",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ClientId\": \"C111\",\n    \"Name\": \"Imran Khan\",\n    \"Email\": \"encrustace@gmail.com\",\n    \"TotalBill\": 112,\n    \"PhoneNumber\": 9999999998\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/client/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"client",
+						"update"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
