@@ -1,10 +1,10 @@
 
 ##Authenticate user
-POST http://localhost:3000/api/user/authenticate
+POST http://localhost:3000/api/user/login
 Content-Type: application/json
 
 {
-    "Email":"imran@gmail.com",
+    "Email":"khan@gmail.com",
     "Password": "123"
 }
 
@@ -18,4 +18,5 @@ Content-Type: application/json
 }
 
 ## Get Users
-GET http://localhost:3000/api/user/get HTTP/1.1
+GET http://localhost:3000/api/user/get
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6ImtoYW5AZ21haWwuY29tIiwiaWF0IjoxNjUxMTgzOTUxLCJleHAiOjE2NTEyNzAzNTF9.cAwyEv4a5Ai0ut02g52XF-HO8GtYXnNMd93ZfOrH5hw
