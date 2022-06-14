@@ -1,11 +1,54 @@
 import mongoose from "mongoose";
 
-const proposalSchema = new mongoose.Schema({
-  id: {
+const likeSchema = new mongoose.Schema({
+  email: {
     type: String,
     required: true,
-    unique: true,
   },
+  timestamp: {
+    type: Date,
+    required: true,
+  },
+});
+
+const investmentSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+  },
+  amount: {
+    type: Number,
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    required: true,
+  },
+});
+
+const conversationSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+  },
+  message: {
+    type: String,
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    required: true,
+  },
+});
+
+const documentSchema = new mongoose.Schema({
+  url: {
+    type: String,
+    required: true,
+  },
+});
+
+const proposalSchema = new mongoose.Schema({
   amount: {
     type: String,
     required: true,
@@ -30,14 +73,18 @@ const proposalSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  documents: {
-    type: String,
-    required: true,
-  },
-  pictures: {
-    type: String,
-    required: true,
-  },
+  documents: [
+    {
+      type: documentSchema,
+      required: true,
+    },
+  ],
+  pictures: [
+    {
+      type: documentSchema,
+      required: true,
+    },
+  ],
   description: {
     type: String,
     required: true,
@@ -60,18 +107,24 @@ const proposalSchema = new mongoose.Schema({
       required: true,
     },
   },
-  likes: {
-    type: String,
-    required: true,
-  },
-  investments: {
-    type: String,
-    required: true,
-  },
-  conversations: {
-    type: String,
-    required: true,
-  },
+  likes: [
+    {
+      type: likeSchema,
+      required: false,
+    },
+  ],
+  investments: [
+    {
+      type: investmentSchema,
+      required: false,
+    },
+  ],
+  conversations: [
+    {
+      type: conversationSchema,
+      required: false,
+    },
+  ],
   created: {
     type: Date,
     required: true,
