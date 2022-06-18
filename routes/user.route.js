@@ -1,5 +1,7 @@
 import express from "express";
 import user from "../models/user.model.js";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 const UserRouter = express.Router();
 
@@ -10,6 +12,7 @@ UserRouter.post("/register", async (req, res) => {
     email: req.body.email,
   });
   if (!existingUser) {
+    newUser.password = bcrypt.hashSync(newUser.password, 10);
     await newUser.save(async (err, user) => {
       if (err) {
         res.status(400).send(err.message);
@@ -59,6 +62,26 @@ UserRouter.delete("/delete", async (req, res) => {
   if (existingUser) {
     await user.deleteOne({ email: req.body.email });
     res.status(200).send("User deleted with email: " + req.body.email);
+  } else {
+    res.status(200).send("User does not exist!");
+  }
+});
+
+//Login
+UserRouter.post("/login", async (req, res) => {
+  let existingUser = await user.findOne({ email: req.body.email });
+  if (existingUser) {
+    if (bcrypt.compareSync(req.body.password, existingUser.password)) {
+      const accessToken = jwt.sign(
+        existingUser.email,
+        process.env.ACCESS_TOKEN_SECRET
+      );
+      res.status(200).send({
+        accessToken: accessToken,
+      });
+    } else {
+      res.status(200).send("Wrong credentials!");
+    }
   } else {
     res.status(200).send("User does not exist!");
   }
